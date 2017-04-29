@@ -23,6 +23,20 @@ end
 
 Entao(/^a opcao "([^"]*)" deve estar selecionada$/) do |opssaum2|
   within_frame(all('iframe')[0]) do
-    assert_selector("#opssaum2")
+    if has_checked_field?(opssaum2) == true
+    else raise "batata"
+    end
   end
+end
+
+Quando(/^eu preencho todos os campos fields com "([^"]*)"$/) do |texto|
+  Navegacao.new.preenchimento_campos_field(texto)
+end
+
+Quando(/^eu clico no botao "([^"]*)"$/) do |botao|
+  click_button(botao)
+end
+
+Entao(/^espero  que todos os campos estejam vazios$/) do
+  Navegacao.new.validar_campos_vazios
 end
