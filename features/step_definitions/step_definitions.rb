@@ -24,4 +24,5 @@ end
 Entao(/^a opcao "([^"]*)" deve estar selecionada$/) do |opssaum2|
   within_frame(all('iframe')[0]) do
     assert_selector("#opssaum2")
+  end
 end
